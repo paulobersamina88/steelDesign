@@ -1,39 +1,21 @@
-# AISC Steel Checker PRO
+# AISC Steel Checker ULTRA Phase 2 — DB Ready
 
-A Streamlit-based preliminary steel design checker for:
-- beams
-- columns
-- braces
-- beam-columns
+This upgrade lets the Streamlit app read:
+1. the AISC Shapes Database Excel file directly, or
+2. a normalized office CSV
 
-## Main features
-- LRFD / ASD switch
-- AISC-style axial, flexural, shear, and interaction checks
-- optional seismic / Zone 4 compactness screening
-- wide flange, HSS rectangular, HSS round, pipe, and circular tubular support
-- simple major-axis LTB screening for W sections
-- conceptual strong-column / weak-beam panel
-- batch checking through CSV upload
-- Excel export of results
+## What it adds
+- auto-detects AISC database files
+- reads the Database v15.0 worksheet
+- maps section labels and type families
+- converts imperial properties to metric internally
+- uses the loaded section library for the checker and batch mode
 
-## Files
-- `app.py`
-- `requirements.txt`
-- `sample_batch.csv`
-- `sample_sections_office_format.csv`
+## Accepted uploads
+- AISC v15.0 Excel file
+- CSV exported from AISC database
+- normalized office CSV with columns like:
+  shape, family, A_mm2, d_mm, bf_mm, tw_mm, tf_mm, Zx_mm3, Zy_mm3, Sx_mm3, Sy_mm3, rx_mm, ry_mm
 
-## Run
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-## Important limitation
-This is a preliminary office checker. It does not yet replace:
-- full frame analysis
-- complete AISC 341 detailing
-- connection design
-- panel zone checks
-- brace/gusset design
-- story drift verification from global model
-- formal NSCP seismic workflow
+## Important
+This is still a preliminary office checker, not a full final-design engine.
